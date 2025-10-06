@@ -15,21 +15,31 @@ public class Guess {
 
     public static void main(String[] args)
     {
+        int count = 0;
         Guess user = new Guess();
         
-        // Make up a number and promt user
         int random = generated_num(); 
-        System.out.print("Guess a number: ");
-        int guess = user.scanner.nextInt();
-
-        // Guess the number
-        while (random != guess)
+        int guess = -1;
+        
+        while (guess != random)
         {
-            if (guess < random) System.out.println("Higher! try again: ");
-            else if(guess > random) System.out.println("Lower! try again; ");
-            guess = user.scanner.nextInt();
+            System.out.print("Guess the number: ");
+            if (user.scanner.hasNextInt())
+            {
+                count++;
+                guess = user.scanner.nextInt();
+                
+                if (guess > random) System.out.println("Lower!");
+                else if (guess < random) System.out.println("Higher!");
+            }
+            else
+            {
+                System.out.println("Bad input! ");
+                user.scanner.next();
+            }
         }
 
-        System.out.println("Good guess! It was indeed " + random);
+        System.out.printf("Good guess! It was indeed: %d, guessed in %d attempts!\n", random, count);
     }
 }
+
