@@ -39,9 +39,10 @@ public class Guess {
             if (guess > random) { System.out.println("Lower!"); count++; }
             else if (guess < random) { System.out.println("Higher!"); count++; }
         }
-
-        System.out.printf("Good guess! It was indeed: %d, guessed in %d attempts!\n", random, count);
+            count++;
+            System.out.printf("Good guess! It was indeed: %d, guessed in %d attempts!\n", random, count);
     }
 }
+
 
 
